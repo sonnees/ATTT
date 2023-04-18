@@ -16,11 +16,29 @@
 </head>
 
 <body style="background-color: #efefef;">
-    <div class="container" style="width: 61%; height: 1500px;">
-        <div class="div" style=" height: 150px">
+    <div class="container" style="width: 61%; height: 2000px;">
+        <div class="div" style=" height: 230px">
             <h4 style="text-align: center;">AN TOÀN THÔNG TIN </h4>
-            <li style="list-style-type: none;"><i>Hướng dẫn:</i> TS. Ngô Hữu Dũng</li>
-            <li style="list-style-type: none;"><i>Bài làm:</i> Nguyễn Văn Sơn</li>
+            
+            <table style="width: 50%; margin-top: 40px; margin-left: 50px;">
+                <tr>
+                    <td><i>Hướng dẫn:</i></td>
+                    <td>TS. Ngô Hữu Dũng</td>
+                </tr>
+                <tr>
+                    <td><i>Bài làm:</i></td>
+                    <td>Nguyễn Văn Sơn</td>
+                </tr>
+                <tr>
+                    <td><i>Source code:</i></td>
+                    <td><a href="https://github.com/sonnees/ATTT">https://github.com/sonnees/ATTT</a></td>
+                </tr>
+                <tr>
+                    <td><i>GitHub Pages:</i></td>
+                    <td><a href="https://sonnees.github.io/ATTT">https://sonnees.github.io/ATTT</a></td>
+                </tr>
+            </table>
+           
         </div>
         <div class="div" style=" height: 380px;">
             <h5>1. Hàm băm CRC32</h5>
@@ -100,30 +118,154 @@
                 </div>
             </div>
         </div>
-
-        <div class="div" style=" height: 390px;">
-            <h5>4. Chữ ký số RSA</h5>
-
-            <div class="container mt-5" style="width: 70%;">
+        <div class="div" style=" height: 140px;">
+            <h5>4. Chữ ký số RSASSA-PKCS1-v1_5</h5>
+            <ul>
+                <li>
+                    Tạo một cặp khóa RSA bao gồm khóa riêng (private key) và khóa công khai (public key).
+                </li>
+                <li>
+                    Tạo một đoạn tin nhắn bất kỳ.
+                </li>
+                <li>
+                    Kết hợp chữ ký với dữ liệu được ký để tạo thành chữ ký số RSASSA-PKCS1-v1_5.
+                </li>
+            </ul>
+  
+        </div>
+        <div class="div" style=" height: 790px; margin-top: -6px;">
+            <h6>4.1 Tạo một cặp khóa RSASSA-PKCS1-v1_5</h6>
+                Sử dụng phương thức generateKey của Web Crypto API để tạo một khóa RSA với các tham số được cấu hình như sau:
+            <ul>
+                
+                <li>
+                    Tên thuật toán: RSASSA-PKCS1-v1_5
+                </li>
+                <li>
+                    Độ dài modulus: 2048 bit
+                </li>
+                <li>
+                    Public exponent: 0x10001
+                </li>
+                <li>
+                    Thuật toán hash: SHA-256
+                </li>
+            </ul>
+            <div class="container mt-5" style="width: 90%;">
 
                 <form>
                     <div class="form-group">
+                       
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputRSA" placeholder="Nhập mật khẩu">
-                        </div>
-                        <div style="margin-top: 5px;"></div>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputRSA_P" placeholder="Nhấp nút 'Tạo khóa riêng' để tạo privateKey " disabled>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-success" type="button" id="privateKey">Tạo khóa riêng</button>
+                                <button style="margin-left: 18px;" class="btn btn-outline-success" type="button" id="privateKey">Tạo privateKey và PublicKey</button>
                             </div>
                         </div>
+                        <div style="margin-top: 20px;"></div>
+                        <div class="input-group"class="col-12">
+                            <h6 class="col-2">PrivateKey: </h6>
+                            <textarea id="inputPrivateKey" rows="10" cols="1000" class="col-10 form-control" >
+                            </textarea>
+                        </div>
+                        <div style="margin-top: 20px;"></div>
+                        <div class="input-group" class="col-12">
+                            <h6 class="col-2">PublicKey: </h6>
+                            <textarea id="inputPublicKey" rows="9" cols="1000" class="col-10 form-control" p>
+                            </textarea>
+                        </div>
+                        
                     </div>
-                    <input type="text" class="form-control" id="passwordHashRSA" placeholder="Chữ ký số sẽ xuất hiện ở đây">
+                    
                 </form>
-                <div style="margin-top: 5px;"></div>
-
             </div>
+        </div>
+
+        <div class="div" style=" height: 100px; margin-top: -6px;">
+            <h6>4.2 Nhập một tin nhắn.</h6>
+            <div class="container" style="width: 90%;">
+                <input type="text" class="form-control" id="dataSign"
+                    placeholder="Nhập một tin nhắn vào đây">
+            </div>
+        </div>
+
+        <div class="div" style=" height: 390px; margin-top: -6px;">
+            <h6>4.3 Kết hợp chữ ký với dữ liệu được ký để tạo thành chữ ký số RSASSA-PKCS1-v1_5</h6>
+            <div style="margin-top: 30px;"></div>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <button style="margin-left: 18px;" class="btn btn-outline-success" type="button" id="sign">Message và Tạo chữ kí đi kèm</button>
+                </div>
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+            
+                <h6 class="col-2">Message: </h6>
+                <input type="text" class="form-control" id="reData" placeholder="Tin nhắn sẽ hiện ở đây">
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+                
+                <h6 class="col-2">Chữ ký: </h6>
+                <textarea id="inputSign" rows="7" cols="1000" class="col-10 form-control" placeholder="Chữ ký sẽ hiện ở đây"></textarea>
+            </div>
+        </div>
+
+        <div class="div" style=" height: 870px;">
+            <h5>5. Kiểm tra tin nhắn chính chủ ở câu 4</h5>
+            <ul>
+                <b>Thông tin cần có: </b>
+                <ul>
+                    <li>Có đoạn tin nhắn và chữ ký đi kèm</li>
+                    <li>Biết publicKey</li>
+                </ul>
+                <b>Kết quả chứng thực tin nhắn chính chủ: </b>
+                <ul>
+                    <li>Trả về True là tin nhắn chính chủ</li>
+                    <li>Trả về False là tin nhắn không chính chủ, đã bị sửa đổi</li>
+                </ul>
+                
+            </ul>
+            <div style="margin-top: 30px;"></div>
+           
+            <div class="input-group" class="col-12">
+            
+                <h6 class="col-2">Nhập message: </h6>
+                <input type="text" class="form-control" id="data5" placeholder="Nhập tin nhắn cần xác thực vào đây">
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+                <h6 class="col-2">Nhập chữ ký đi kèm: </h6>
+                <textarea id="signData5" rows="7" cols="1000" class="col-10 form-control" placeholder="Nhập chữ ký đi kèm vào đây"></textarea>
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+                <h6 class="col-2">Nhập publicKey: </h6>
+                <textarea id="publicKey5" rows="9" cols="1000" class="col-10 form-control"
+                    placeholder="Nhập publicKey vào đây"></textarea>
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="input-group" class="col-12">
+                <button class="btn btn-outline-success col-2" type="button" id="checkSign" style="margin-left: 138px;">Xác thực</button>
+            </div>
+            <div style="margin-top: 20px;"></div>
+           <div class="input-group" class="col-12">
+                <h6 class="col-2">Kết quả: </h6>
+                <input type="text" class="form-control" id="kqCheckSign" placeholder="kết quả xác thực sẽ hiện ở đây">
+            </div>
+            
+        </div>
+        <div class="div" style=" height: 150px;">
+            <h5>Tài liệu tham khảo</h5>
+            <ul>
+                <li>
+                    Slide giảng dạy HÀM BĂM – CHỮ KÝ SỐ
+                </li>
+                <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey </a>
+                </li>
+            
+            </ul>
+            <i style="float: right; opacity: 0.7;">socials '<b>sonnees</b>' =)</i>
         </div>
     </div>
     <script>
@@ -166,29 +308,135 @@
             document.getElementById("passwordHashMD5Length").value = "Độ dài của kết quả băm (tính bằng bit, length * 4): " + hash_value.length * 4;
         });
 
-        document.getElementById("privateKey").addEventListener("click", function() {
+        function arrayBufferToHex(buffer) {
+                return Array.prototype.map.call(new Uint8Array(buffer), function (x) {
+                    return ('00' + x.toString(16)).slice(-2);
+                }).join('');
+        }
 
-        });
+        function hexToArrayBuffer(hexString) {
+                const buffer = new Uint8Array(hexString.length / 2);
+                for (let i = 0; i < hexString.length; i += 2) {
+                    buffer[i / 2] = parseInt(hexString.substring(i, i + 2), 16);
+                }
+                return buffer;
+        }
+       
+        async function generateKeyPair() {
+            const keyPair = await window.crypto.subtle.generateKey(
+                {
+                    name: "RSASSA-PKCS1-v1_5",
+                    modulusLength: 2048,
+                    publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+                    hash: {
+                        name: "SHA-256"
+                    }
+                },
+                true,
+                ["sign", "verify"]
+            );
 
-        document.getElementById("RSA").addEventListener("click", function() {
-            async function test() {
+            privateKey = await window.crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
+            publicKey = await window.crypto.subtle.exportKey("spki", keyPair.publicKey);
 
-                const data = new TextEncoder().encode(document.getElementById("inputRSA").value);
+            return {
+                privateKey,
+                publicKey
+            };
+        }
 
-                const privateKey = document.getElementById("inputRSA_P").value;
+        async function signData(privateKey, data) {
+                const privateKeyObj = await window.crypto.subtle.importKey(
+                    "pkcs8",
+                    privateKey,
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                        hash: {
+                            name: "SHA-256"
+                        }
+                    },
+                    false,
+                    ["sign"]
+                );
 
-                const signature = await window.crypto.subtle.sign({
-                    name: 'RSASSA-PKCS1-v1_5',
-                    hash: 'SHA-256'
-                }, privateKey, data); // Tạo chữ ký số
-
+                const signature = await window.crypto.subtle.sign(
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                    },
+                    privateKeyObj,
+                    data
+                );
 
                 return signature;
             }
-            document.getElementById("passwordHashRSA").value = test().then(result => alert(result))
-                .catch(error => alert(error));
+        async function verifySignature(publicKey, signature, data) {
+                const publicKeyObj = await window.crypto.subtle.importKey(
+                    "spki",
+                    publicKey,
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                        hash: {
+                            name: "SHA-256"
+                        }
+                    },
+                    false,
+                    ["verify"]
+                );
+
+                const result = await window.crypto.subtle.verify(
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                    },
+                    publicKeyObj,
+                    signature,
+                    data
+                );
+
+                return result;
+            }
+
+        document.getElementById("privateKey").addEventListener("click", async function () {
+
+                try {  
+                    generateKeyPair().then((keyPair) => {
+                        document.getElementById("inputPrivateKey").value = arrayBufferToHex(keyPair.privateKey);
+                        document.getElementById("inputPublicKey").value = arrayBufferToHex(keyPair.publicKey);
+                    })
+                    
+                } catch (err) {
+                    alert(err);
+                }
+            });
+        
+        document.getElementById("sign").addEventListener("click", async function () {
+            data = new TextEncoder().encode(document.getElementById("dataSign").value);
+            document.getElementById("reData").value = document.getElementById("dataSign").value;
+            privateKey = hexToArrayBuffer(document.getElementById("inputPrivateKey").value);
+            try {
+                const signature = await signData(privateKey, data);
+                document.getElementById("inputSign").value = arrayBufferToHex(signature)
+            } catch (error) {
+                alert(error);
+            } 
+        });
+
+        document.getElementById("checkSign").addEventListener("click", async function () {
+            data = new TextEncoder().encode(document.getElementById("data5").value);
+            signature = hexToArrayBuffer(document.getElementById("signData5").value);
+            publicKey = hexToArrayBuffer(document.getElementById("publicKey5").value);
+
+            try {
+                const isVerified = await verifySignature(publicKey, signature, data);
+               
+                if (isVerified) {
+                     document.getElementById("kqCheckSign").value = "Tin nhắn chính chủ";
+                } else {
+                     document.getElementById("kqCheckSign").value = "Tin nhắn không chính chủ, nội dung đã bị thay đổi";
+                }
+            } catch (error) {
+                alert(error);
+            } 
         });
     </script>
 </body>
-
 </html>
