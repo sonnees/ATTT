@@ -3,3 +3,13 @@
     margin-bottom: 15px; border-radius: 5px;
     padding: 20px 20px 20px 20px;
 }
+
+.fixed {
+    width: 15%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 0px 0px 5px 5px ;
+    position: fixed;
+    left: 5.5%;
+    
+}

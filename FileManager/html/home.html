@@ -16,11 +16,18 @@
 </head>
 
 <body style="background-color: #efefef;">
-    <div class="container" style="width: 61%; height: 2000px;">
-        <div class="div" style=" height: 230px">
+    <div class="fixed">
+        <a style="font-size: 12px;" href="#index1">1. Hàm băm CRC32</a> <br>
+        <a style="font-size: 12px;" href="#index2">2. Hàm băm SHA-1</a><br>
+        <a style="font-size: 12px;" href="#index3">3. Hàm băm MD5</a><br>
+        <a style="font-size: 12px;" href="#index4">4. Chữ ký số RSASSA-PKCS1-v1_5</a><br>
+        <a style="font-size: 12px;" href="#index5">5. Kiểm tra tin nhắn chính chủ</a><br>
+    </div>
+    <div class="container" style="width: 60%; height: 2000px;">
+        <div class="div" style=" height: 230px; border-radius: 0px 0px 5px 5px ;">
             <h4 style="text-align: center;">AN TOÀN THÔNG TIN </h4>
             
-            <table style="width: 50%; margin-top: 40px; margin-left: 50px;">
+            <table style="width: 50%; margin-top: 40px; margin-left: 50px; ">
                 <tr>
                     <td><i>Hướng dẫn:</i></td>
                     <td>TS. Ngô Hữu Dũng</td>
@@ -41,7 +48,7 @@
            
         </div>
         <div class="div" style=" height: 380px;">
-            <h5>1. Hàm băm CRC32</h5>
+            <a name="index1"><h5>1. Hàm băm CRC32</h5></a>
             <ul>
                 <li>Tính toán nhanh: CRC32 là một thuật toán tính toán nhanh, phổ biến trong các ứng dụng yêu cầu tốc độ xử lý cao.</li>
                 <li>Chu kỳ ngắn: CRC32 có chu kỳ ngắn, giúp phát hiện và phân biệt các lỗi trong dữ liệu nhanh chóng.</li>
@@ -64,7 +71,7 @@
             </div>
         </div>
         <div class="div" style=" height: 330px;">
-            <h5>2. Hàm băm SHA-1</h5>
+            <a name="index2"><h5>2. Hàm băm SHA-1</h5></a>
             <ul>
                 <li>Độ dài đầu ra cố định: Giá trị băm SHA-1 có độ dài cố định là 160 bit (20 byte).</li>
                 <li>Li độ tin cậy: SHA-1 được coi là đáng tin cậy trong quá khứ, nhưng hiện nay đã không được khuyến cáo sử dụng do các lỗ hổng bảo mật đã được phát hiện và không an toàn trong một số trường hợp.</li>
@@ -93,7 +100,8 @@
         </div>
 
         <div class="div" style=" height: 390px;">
-            <h5>3. Hàm băm MD5</h5>
+            <a name="index3"><h5>3. Hàm băm MD5</h5></a>
+            
             <ul>
                 <li>Độ dài đầu ra cố định: Giá trị băm MD5 có độ dài cố định là 128 bit (16 byte).</li>
                 <li>Tính đa dạng: MD5 cho kết quả băm có tính đa dạng, nghĩa là những thay đổi nhỏ trong dữ liệu gốc sẽ tạo ra giá trị băm khác nhau.</li>
@@ -119,7 +127,7 @@
             </div>
         </div>
         <div class="div" style=" height: 140px;">
-            <h5>4. Chữ ký số RSASSA-PKCS1-v1_5</h5>
+            <a name="index4"><h5>4. Chữ ký số RSASSA-PKCS1-v1_5</h5></a>
             <ul>
                 <li>
                     Tạo một cặp khóa RSA bao gồm khóa riêng (private key) và khóa công khai (public key).
@@ -133,7 +141,7 @@
             </ul>
   
         </div>
-        <div class="div" style=" height: 790px; margin-top: -6px;">
+        <div class="div" style=" height: 820px; margin-top: -6px;">
             <h6>4.1 Tạo một cặp khóa RSASSA-PKCS1-v1_5</h6>
                 Sử dụng phương thức generateKey của Web Crypto API để tạo một khóa RSA với các tham số được cấu hình như sau:
             <ul>
@@ -151,32 +159,26 @@
                     Thuật toán hash: SHA-256
                 </li>
             </ul>
-            <div class="container mt-5" style="width: 90%;">
-
-                <form>
-                    <div class="form-group">
-                       
-                        <div class="input-group">
-                            <div class="input-group-append">
-                                <button style="margin-left: 18px;" class="btn btn-outline-success" type="button" id="privateKey">Tạo privateKey và PublicKey</button>
-                            </div>
-                        </div>
-                        <div style="margin-top: 20px;"></div>
-                        <div class="input-group"class="col-12">
-                            <h6 class="col-2">PrivateKey: </h6>
-                            <textarea id="inputPrivateKey" rows="10" cols="1000" class="col-10 form-control" >
-                            </textarea>
-                        </div>
-                        <div style="margin-top: 20px;"></div>
-                        <div class="input-group" class="col-12">
-                            <h6 class="col-2">PublicKey: </h6>
-                            <textarea id="inputPublicKey" rows="9" cols="1000" class="col-10 form-control" p>
-                            </textarea>
-                        </div>
-                        
+            <div class="div">
+                <div class="input-group">
+                    <div class="input-group-append">
+                        <button style="margin-left: 18px;" class="btn btn-outline-success" type="button" id="privateKey">Tạo privateKey
+                            và PublicKey</button>
                     </div>
-                    
-                </form>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <div class="input-group" class="col-12">
+                    <h6 class="col-2">PrivateKey: </h6>
+                    <textarea id="inputPrivateKey" rows="10" cols="1000" class="col-10 form-control">
+                                            </textarea>
+                </div>
+                <div style="margin-top: 20px;"></div>
+                <div class="input-group" class="col-12">
+                    <h6 class="col-2">PublicKey: </h6>
+                    <textarea id="inputPublicKey" rows="9" cols="1000" class="col-10 form-control" p>
+                                            </textarea>
+                </div>
+ 
             </div>
         </div>
 
@@ -211,7 +213,7 @@
         </div>
 
         <div class="div" style=" height: 870px;">
-            <h5>5. Kiểm tra tin nhắn chính chủ ở câu 4</h5>
+            <a name="index5"><h5>5. Kiểm tra tin nhắn chính chủ ở câu 4</h5></a>
             <ul>
                 <b>Thông tin cần có: </b>
                 <ul>
@@ -265,7 +267,7 @@
                 </li>
             
             </ul>
-            <i style="float: right; opacity: 0.7;">socials '<b>sonnees</b>' =)</i>
+            <i style="float: right; opacity: 0.7;">socials '<b>son nees</b>' =)</i>
         </div>
     </div>
     <script>
